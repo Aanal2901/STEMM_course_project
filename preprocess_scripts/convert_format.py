@@ -11,10 +11,10 @@ args = parser.parse_args()
 
 WORD_TABLE_COLUMNS = ['id', 'word_time', 'word_text']
 
-root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-seg_path = os.path.join(root, 'data', 'mustc', f'en-{args.lang}', 'segment')
-splits = ['dev', 'tst-COMMON', 'tst-HE', 'train']
+seg_path = f"/content/mass-dataset/dataset/{args.lang}/"
+splits = ['dev']
 
 def convert(path):
     tg = textgrid.TextGrid.fromFile(path)
@@ -42,14 +42,14 @@ def save_df_to_tsv(dataframe, path):
 def main():
     for split in splits:
         word_table = {c: [] for c in WORD_TABLE_COLUMNS}
-        split_path = os.path.join(seg_path, split + '_align')
+        split_path = os.path.join(seg_path, 'maus_textgrid/')
         speaker_dirs = os.listdir(split_path)
         speaker_dirs = list(filter(lambda x:str.isdigit(x), speaker_dirs))
         speaker_dirs.sort(key=lambda x:int(x))
         pbar = tqdm.tqdm(range(len(speaker_dirs)))
         for speaker in speaker_dirs:
             pbar.update()
-            speaker_dir = os.path.join(split_path, speaker)
+            speaker_dir = os.path.join(seg_path, speaker)
             if os.path.isdir(speaker_dir):
                 align_files = os.listdir(speaker_dir)
                 align_files.sort(key=lambda x:int(x.split('.')[0].split('_')[-1]))
