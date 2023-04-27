@@ -7,8 +7,22 @@ This project (STEMM) is an implementation of the ACL 2022 main conference paper 
 The poster (MSN) has been added to the root folder. There is a python notebook that can be used to run this model. Since the dataset being used is very large, we will use a smaller dataset MaSS - Multilingual corpus of Sentence-aligned Spoken utterances (https://github.com/getalp/mass-dataset/tree/master), developed by the CMU team (https://arxiv.org/pdf/1907.12895.pdf). 
 
 There is google colab notebook containing the code to run this project. Instead of the montreal forced aligner, we have used a muas aligner. (https://www.bas.uni-muenchen.de/Bas/BasMAUS.html). 
-Since the dataset (must-c) was extremely large and the code is heavily tailored for must-c dataset, we were not able to complete this.
 
+Main Features
+ - Maus aligner is used for alignment of text and speech data
+ - wav2vec2 is the backbone of speech encoder
+ - Transformers used for translation encoder and decoder
+
+Issues faced 
+ - The original dataset (must-c) is extremely large (1000GB) 
+ - The code is heavily tailored for must-c dataset, we are still in the process of tailoring it for mass dataset
+
+Takeaway
+ - This paper is the first to propose the idea of a manifold mixup in multimodal data to improve model performance
+ - Despite the issues our next attempt is to use the encoder decoder model and create our own training and testing pipeline
+ - First would be to perform extensive testing on noisier datasets
+ - Test for bias in multimodal dataset
+ 
 Citations
 ```
 @inproceedings{fang-etal-2022-STEMM,
@@ -24,5 +38,5 @@ Citations
 
 ## Contact
 
-If you have any questions, feel free to contact me at `fangqingkai21b@ict.ac.cn`.
+If you have any questions, feel free to contact me at `aanalsonara@gmail.com` or `kalp.vyas@iitb.ac.in`.
 
