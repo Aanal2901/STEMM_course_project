@@ -2,7 +2,8 @@
 ## STEMM: Self-learning with **S**peech-**T**ext **M**anifold **M**ixup for Speech Translation
 
 ### Team Pitch Perfect
-
+Aanal Sonara (190070064)
+Kalp Vyas (200070030)
 This project (STEMM) is an implementation of the ACL 2022 main conference paper [STEMM: Self-learning with Speech-text Manifold Mixup for Speech Translation](https://arxiv.org/abs/2203.10426). 
 
 The poster (MSN) has been added to the root folder. There is a python notebook that can be used to run this model. Since the dataset being used is very large, we will use a smaller dataset MaSS - Multilingual corpus of Sentence-aligned Spoken utterances (https://github.com/getalp/mass-dataset/tree/master), developed by the CMU team (https://arxiv.org/pdf/1907.12895.pdf). 
@@ -18,7 +19,7 @@ Issues faced
  - The original dataset (must-c) is extremely large (1000GB). Hence we decided to try a smaller dataset MaSS which is around 2GB zip file. We can either follow steps 1 to 5 from `preprocess.sh` or use the textgrid format provided by MaSS dataset in their `dataset` folder. After getting textgrid, we use file `preprocess_scripts/convert_format.py` to get text data in tsv format. The code is heavily tailored for must-c dataset as they are using fair-seq library and therefore, we cannot simply use it on MaSS dataset.
  - We tried two things: One is to import their fairseq encoder decoder modules, however locating their classes is a difficult task. The folder `fairseq/models` contains different models (but not checkpoints) and hence not directly implementable. 
  - We downloaded the checkpoints for 'En-Fr' (as the focus was to get it running for atleast two languages)  
- - Using the script from `examples/speech-to-text/prep_librispeech_data` we created the librispeech dataset however, it is not for translation only for speech-to-text hence checkpoints of the same in the STEMM are not provided. 
+ - Using the script from `examples/speech-to-text/prep_librispeech_data` we created the librispeech dataset however, it is not for translation only for speech-to-text hence checkpoints of the same in the STEMM are not provided. Also we kept getting a `examples` module not found, as many functions and models are imported directly from examples as `examples.speech_to_text` and we haven't been able to debug it as this wasn't the bug before.  
  - Biggest issue was not knowing the structure of mustc data and hence not being able to convert our data structure. 
  
 Takeaway
